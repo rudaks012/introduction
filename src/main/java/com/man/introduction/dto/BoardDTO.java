@@ -1,7 +1,9 @@
 package com.man.introduction.dto;
 
 import java.time.LocalDateTime;
+import jdk.jshell.Snippet;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +14,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor //기본 생성자
-@AllArgsConstructor //모든 필드를 파라미터로 받는 생성자
+//@AllArgsConstructor //모든 필드를 파라미터로 받는 생성자
 public class BoardDTO {
 
     private Long id;
@@ -25,4 +27,4 @@ public class BoardDTO {
     private LocalDateTime boardUpdatedTime;
 
 
-}
+      }
