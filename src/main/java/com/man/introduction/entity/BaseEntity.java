@@ -15,6 +15,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class BaseEntity {
 
     @CreationTimestamp // insert 시 자동으로 현재 시간이 들어감
+    //다른 방법 : @PrePersist
     @Column(updatable = false) // update 시에는 값이 들어가지 않음
     private LocalDateTime createdTime;
 
