@@ -14,6 +14,7 @@ public class BoardService {
 
     private  final BoardRepository boardRepository;
     public void save(BoardDTO boardDTO) {
+        //toEntity() 메소드를 사용해서 BoardDTO를 BoardEntity로 변환
         BoardEntity boardEntity = BoardEntity.toSaveEntity(boardDTO);
         boardRepository.save(boardEntity);
     }
