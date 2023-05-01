@@ -5,8 +5,10 @@ import com.man.introduction.entity.BoardEntity;
 import com.man.introduction.repository.BoardRepository;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 //DTO -> Entity (Entity Class)
 //Entity -> DTO (DTO Class)
@@ -31,5 +33,22 @@ public class BoardService {
         }
         return boardDTOList;
 
+    }
+
+    @Transactional //트랜잭션 처리 커스텀메서드에는 영속성 컨텍스트가 적용되지 않으므로 @Transactional 어노테이션을 붙여줘야함
+    public void updateHits(Long id) {
+        boardRepository.updateHits(id);
+
+    }
+
+    public BoardDTO findById(Long id) {
+        Optional<BoardEntity> optionalBoardEntity = boardRepository.findById(id);
+        if (optionalBoardEntity.isPresent()) {
+            BoardEntity boardEntity = optionalBoardEntity.get();
+            BoardDTO boardDTO = BoardDTO.toBoardDTO(boardEntity);
+            return boardDTO;
+        } else {
+            return null;
+        }
     }
 }
