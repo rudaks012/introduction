@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!-- thymeleaf를 사용하기 위한 namespace -->
+<head>
+  <meta charset="UTF-8">
+  <title>list</title>
+</head>
+<body>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>TITLE</th>
+    <th>TITLE(||쓰지 않은 경우)</th>
+    <th>WRITER</th>
+    <th>DATE</th>
+    <th>HITS</th>
+  </tr>
+  <tr th:each="board: ${boardList}"> <!-- th:each: 반복문 -->
+    <td th:text="${board.id}"></td>
+    <td><a th:href="@{|/board/${board.id}|}" th:text="${board.boardTitle}"></a></td> <!-- th:href: 링크 --> <!-- ||: 문자열을 더할 때 사용 -->
+    <td><a th:href="@{/board/${board.id}}" th:text="${board.boardTitle}"></a></td>
+    <td th:text="${board.boardWriter}"></td>
+    <td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td> <!-- thymeleaf에서 날짜 포맷팅 -->
+    <td th:text="${board.boardHits}"></td>
+  </tr>
+</table>
+</body>
+</html>
